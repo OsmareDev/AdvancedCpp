@@ -1,37 +1,23 @@
 # English
-In this project, we aim to assess the costs associated with dynamic memory allocation as opposed to static memory (using the program stack). Additionally, we will explore potential improvements by overloading the new and delete operators.
+In this project, I'm transforming a regular class into a template class and working with some template concepts learned in theory classes.
+1. Test Program
 
-1. Comparison of Memory Costs
+I've written a program (test_tabla.cpp) to test the Tabla class, which implements a hash table with chaining. The steps of the program include:
 
-For a fair comparison, we will create two functions, costeMem1 and costeMem2, each allocating 10,000 objects of class Prueba.
+    Creating a hash table of the appropriate size for storing 20 students and generating these students to insert into the table.
+    Searching for a key that exists in the table and another key that does not exist. The program displays the student or a message like "Student does not exist."
 
-- Function costeMem1
-This function allocates objects in static memory (program stack) and performs operations on them. The attribute i1 of each object is assigned the value of its position in the array, and the addition of these values is calculated in a loop. The result is returned as the function output.
+2. Conversion to Template Class
 
-- Function costeMem2
-This function allocates objects in dynamic memory, using an array of 10,000 pointers to Prueba. Similar to costeMem1, it performs operations on these objects, but in the first loop, it also dynamically allocates the 10,000 objects using the new operator, and in the second loop, it frees all the objects.
+I've converted the Tabla class into a template class, enabling users to utilize it with any type of key or value. As the class is now a template, all the code is included in the header file (table_t.h). The class has been tested with the previous program, and a copy has been stored for project 6.
+3. Collision List
 
-Both functions will be executed multiple times to measure execution times accurately, using clock_gettime() or the chrono library.
+In the current version, a vector is used for the collision list. I've modified the class to allow the selection of the container to be used as a collision list using a template template parameter. The class supports at least a vector and a list. Program comments indicate which operations should be supported by the container. The program has been tested with both types of containers.
+4. Hash Function
 
-2. Use of unique_ptr and shared_ptr
-Function costeMem3 (unique_ptr)
+I've incorporated a templated hash function object from the <functional> library called std::hash, which has specializations for various types. The class has been tested to ensure it works correctly with the types int and string.
 
-A third function based on costeMem2, but replacing all pointers with unique_ptr. The goal is to evaluate the use of unique_ptr for memory management.
-Function costeMem4 (shared_ptr)
-
-A fourth function based on costeMem2, but replacing all pointers with shared_ptr. This aims to assess the use of shared_ptr.
-
-Comparison of execution times will be performed for the four functions in two scenarios: compiling without optimization and compiling with the option -O2.
-
-3. Overload of new and delete for class Prueba
-
-In this section, we will overload the new and delete operators specifically for the class Prueba. Multiple methods, including a vector of bits or a free-list, will be explored to enhance memory management efficiency. The program from Section 1 will be repeated, and the results will be compared.
-
-4. Changing the Order of Deletion
-
-The order of deletion in costeMem2 will be altered by creating a vector of indexes in the main function and passing it as a parameter to costeMem2. This vector will be utilized for deleting objects in a random order, and the creation of the vector will involve the use of std::shuffle.
-
-A document with a table summarizing all execution times and the derived conclusions will be presented at the end of the project. The programs will be compiled with the -O2 option for optimization.
+Sometimes, an application may require a specific hash function. I've modified the design of the hash table by adding a new template parameter. This parameter allows the modification of the set of hash functions from the main file, enabling the use of different hash functions as needed. This parameter can be considered a policy class. I've also tested these modifications for the types int and string.
 
 # Castellano
 

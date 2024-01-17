@@ -61,6 +61,14 @@
         "xtr1common": "cpp",
         "xutility": "cpp",
         "random": "cpp",
-        "functional": "cpp"
+        "functional": "cpp",
+        "any": "cpp",
+        "chrono": "cpp",
+        "fstream": "cpp",
+        "iomanip": "cpp",
+        "map": "cpp",
+        "sstream": "cpp",
+        "string": "cpp",
+        "xtree": "cpp"
     }
 }
