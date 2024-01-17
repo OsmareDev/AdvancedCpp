@@ -1,0 +1,1 @@
+make && ./bin/sort_test && ./bin/sort_stl
