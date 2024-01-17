@@ -1,0 +1,1 @@
+make && echo "CPP: 1:" && ./memcost &&  echo "CPP: 2:" && ./memcost2 
